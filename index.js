@@ -37,15 +37,15 @@ app.post("/upload", upload.single("file"), (req, res) => {
     res.status(200).json("File has been uploaded");
 });
 
-app.use("/auth", authRoute)
-app.use("/users", usersRoute)
-app.use("/posts", postRoute)
-app.use("/categories", categoryRoute)
+app.use("/api/auth", authRoute)
+app.use("/api/users", usersRoute)
+app.use("/api/posts", postRoute)
+app.use("/api/categories", categoryRoute)
 
 app.use(express.static(path.join(__dirname, "/client")));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build/', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/build/', 'index.html'));
 });
 
 app.listen(process.env.PORT || 5000, () => {
